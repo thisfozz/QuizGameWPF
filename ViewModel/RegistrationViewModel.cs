@@ -75,9 +75,7 @@ namespace QuizGame.ViewModel
         {
             bool isRegistrationSuccessful = registration.RegisterUser(userModel.Login, userModel.Password, userModel.DateOfBirth);
 
-            if (dataCorrectness.isCheckLogin(userModel.Login) &&
-                dataCorrectness.isCheckPassword(userModel.Password) &&
-                dataCorrectness.IsCheckDate(UserModel.DateOfBirth))
+            if (isRegistrationSuccessful)
             {
                 string encryptedPassword = aesEncryption.Encrypt(userModel.Password);
                 isRegistrationSuccessful = authenticationManager.RegisterUser(userModel.Login, encryptedPassword, userModel.DateOfBirth);
