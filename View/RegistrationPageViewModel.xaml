@@ -31,7 +31,7 @@
 
         <Label Content="Логин:" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="0,50,30,50"/>
         <TextBox Width="200" Height="25" Grid.Column="3" Grid.Row="2" Margin="0,0,50,0" 
-                 Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}">
+                 Text="{Binding UserModel.Login, UpdateSourceTrigger=PropertyChanged}">
             <TextBox.ToolTip>
                 <ToolTip Content="Логин" Placement="Top"/>
             </TextBox.ToolTip>
@@ -39,7 +39,7 @@
 
         <Label Content="Пароль:" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" />
         <TextBox Width="200" Height="25" Grid.Column="3" Grid.Row="3" Margin="0,0,50,0"
-                 Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}">
+                 Text="{Binding UserModel.Password, UpdateSourceTrigger=PropertyChanged}">
             <TextBox.ToolTip>
                 <ToolTip Content="Пароль" Placement="Top"/>
             </TextBox.ToolTip>
@@ -47,7 +47,7 @@
 
         <Label Content="Дата рождения:" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="0,0,20,-30" />
         <DatePicker Width="200" Height="25" Grid.Column="3" Grid.Row="4" Margin="0,30,50,0"
-                    Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}">
+                    Text="{Binding UserModel.DateOfBirth, UpdateSourceTrigger=PropertyChanged}">
             <DatePicker.ToolTip>
                 <ToolTip Content="Дата рождения" Placement="Top"/>
             </DatePicker.ToolTip>

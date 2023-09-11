@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace QuizGame.RegistrationAndAuthorization
 {
-    public class Registration : IDisposable
+    public class Registration
     {
         private AuthenticationManager authenticationManager;
         private AesEncryptionNamespace.AesEncryption aesEncryption;
@@ -19,9 +19,6 @@ namespace QuizGame.RegistrationAndAuthorization
 
         public bool RegisterUser(string login, string password, DateTime dateOfBirth)
         {
-            int cursorPositionInput, cursorNotifyAndInput;
-            string text = string.Empty;
-
             bool loginisCorrect = DataCorrectness.isCheckLogin(login);
             bool passwordisCorrect = DataCorrectness.isCheckLogin(password);
             bool dateOfBirthCorrect = DataCorrectness.IsCheckDate(dateOfBirth);
@@ -38,11 +35,6 @@ namespace QuizGame.RegistrationAndAuthorization
             {
                 return false;
             }
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
         }
     }
 }

@@ -15,15 +15,11 @@ namespace QuizGame.ViewModel
 {
     internal class RegistrationViewModel : INotifyPropertyChanged
     {
-        private UserModel userModel;
         private AesEncryption aesEncryption;
-        private DataCorrectnessNamespace.DataCorrectness dataCorrectness;
         private AuthenticationManagerNamespace.AuthenticationManager authenticationManager;
         private QuizGame.RegistrationAndAuthorization.Registration registration;
 
-        private string _login;
-        private string _password;
-        private DateTime DateOfBirth;
+        private UserModel userModel;
 
         public ICommand RegisterButton { get; }
 
@@ -57,16 +53,17 @@ namespace QuizGame.ViewModel
 
         public RegistrationViewModel()
         {
-            dataCorrectness = new DataCorrectnessNamespace.DataCorrectness();
             authenticationManager = new AuthenticationManagerNamespace.AuthenticationManager();
             aesEncryption = new AesEncryption();
-            userModel = new UserModel();
+            UserModel = new UserModel();
 
-            RegisterButton = new DelegateCommand(Register, (_) =>
+            RegisterButton = new DelegateCommand(Register, 
+            (_) =>
             {
-                return !string.IsNullOrEmpty(UserModel.Login) &&
-                !string.IsNullOrEmpty(UserModel.Login) &&
-                !string.IsNullOrEmpty(UserModel.Login);
+                return 
+                !string.IsNullOrEmpty(UserModel?.Login)
+                && !string.IsNullOrEmpty(UserModel?.Password)
+                && UserModel?.DateOfBirth != null;
             });
             PropertyChanged += (_, _) => { ((DelegateCommand)RegisterButton).RaiseCanExecuteChanged(); };
         }
@@ -76,19 +73,24 @@ namespace QuizGame.ViewModel
             get { return userModel; }
             set
             {
+                if (userModel == value) return;
                 userModel = value;
+                userModel.PropertyChanged += (_, _) =>
+                {
+                    ((DelegateCommand)RegisterButton).RaiseCanExecuteChanged();
+                };
                 OnPropertyChanged();
             }
         }
 
         private void Register(object parametr)
         {
-            bool isRegistrationSuccessful = registration.RegisterUser(userModel.Login, userModel.Password, userModel.DateOfBirth);
+            isRegistrationSuccessful = registration.RegisterUser(UserModel.Login, UserModel.Password, UserModel.DateOfBirth);
 
             if (isRegistrationSuccessful)
             {
-                string encryptedPassword = aesEncryption.Encrypt(userModel.Password);
-                isRegistrationSuccessful = authenticationManager.RegisterUser(userModel.Login, encryptedPassword, userModel.DateOfBirth);
+                string encryptedPassword = aesEncryption.Encrypt(UserModel.Password);
+                isRegistrationSuccessful = authenticationManager.RegisterUser(UserModel.Login, encryptedPassword, UserModel.DateOfBirth);
 
                 if (isRegistrationSuccessful)
                 {
@@ -108,14 +110,7 @@ namespace QuizGame.ViewModel
             }
         }
 
-        private bool CanRegister(object parametr)
-        {
-            return !string.IsNullOrWhiteSpace(UserModel.Login)
-                && !string.IsNullOrWhiteSpace(UserModel.Password)
-                && UserModel.DateOfBirth != null;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
