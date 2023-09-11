@@ -6,13 +6,13 @@ using AesEncryptionNamespace;
 
 namespace AuthenticationManagerNamespace
 {
-    public class AuthenticationManager
+    public class AuthenticationUser
     {
-        private List<UserData> registeredUsers; // ?? static ??
+        private List<UserData> registeredUsers;
         private UserData currentUser;
         private AesEncryption aesEncryption;
 
-        public AuthenticationManager()
+        public AuthenticationUser()
         {
             aesEncryption = new AesEncryption();
             registeredUsers = LoadData.LoadUserData();
@@ -38,13 +38,15 @@ namespace AuthenticationManagerNamespace
         }
         public bool RegisterUser(string loginUser, string passwordUser, DateTime birthdate)
         {
-            if (registeredUsers.Exists(u => u.Login == loginUser)) return false;
-
             UserData newUser = new UserData(loginUser, passwordUser, birthdate);
             registeredUsers.Add(newUser);
             SaveRegisteredUsers();
             currentUser = newUser;
             return true;
+        }
+        public bool RegistrationVerification(string loginUser, string passwordUser, DateTime birthdate)
+        {
+            return registeredUsers.Exists(u => u.Login == loginUser);
         }
         public void UpdatePassword(string login, string password)
         {

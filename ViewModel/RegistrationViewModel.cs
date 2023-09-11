@@ -1,13 +1,8 @@
 ﻿using AesEncryptionNamespace;
 using AuthenticationManagerNamespace;
-using DataCorrectnessNamespace;
 using Quiz.Command;
 using QuizGame.Model;
-using QuizGame.RegistrationAndAuthorization;
-using RegistrationNamespace;
-using System;
 using System.ComponentModel;
-using System.Net;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -16,14 +11,13 @@ namespace QuizGame.ViewModel
     internal class RegistrationViewModel : INotifyPropertyChanged
     {
         private AesEncryption aesEncryption;
-        private AuthenticationManagerNamespace.AuthenticationManager authenticationManager;
-        private QuizGame.RegistrationAndAuthorization.Registration registration;
+        private AuthenticationUser authenticationManager;
 
         private UserModel userModel;
 
         public ICommand RegisterButton { get; }
 
-        public bool isRegistrationSuccessful { get; private set; }
+        public bool isRegistrationSuccessful { get; set; }
         public bool IsRegistrationSuccessful
         {
             get { return isRegistrationSuccessful; }
@@ -37,7 +31,7 @@ namespace QuizGame.ViewModel
             }
         }
 
-        public string registrationErrorMessage { get; private set; }
+        public string registrationErrorMessage { get; set; }
         public string RegistrationErrorMessage
         {
             get { return registrationErrorMessage; }
@@ -53,7 +47,7 @@ namespace QuizGame.ViewModel
 
         public RegistrationViewModel()
         {
-            authenticationManager = new AuthenticationManagerNamespace.AuthenticationManager();
+            authenticationManager = new AuthenticationUser();
             aesEncryption = new AesEncryption();
             UserModel = new UserModel();
 
@@ -85,9 +79,9 @@ namespace QuizGame.ViewModel
 
         private void Register(object parametr)
         {
-            isRegistrationSuccessful = registration.RegisterUser(UserModel.Login, UserModel.Password, UserModel.DateOfBirth);
+            isRegistrationSuccessful = authenticationManager.RegistrationVerification(UserModel.Login, UserModel.Password, UserModel.DateOfBirth);
 
-            if (isRegistrationSuccessful)
+            if (!isRegistrationSuccessful)
             {
                 string encryptedPassword = aesEncryption.Encrypt(UserModel.Password);
                 isRegistrationSuccessful = authenticationManager.RegisterUser(UserModel.Login, encryptedPassword, UserModel.DateOfBirth);
