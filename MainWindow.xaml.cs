@@ -9,6 +9,10 @@ namespace QuizGame
         {
             InitializeComponent();
             DataContext = new MainViewModel();
+
+
+            Width = 1600;
+            Height = 800;
         }
     }
 }

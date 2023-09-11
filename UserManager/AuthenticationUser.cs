@@ -47,13 +47,6 @@ namespace AuthenticationManagerNamespace
         {
             return registeredUsers.Exists(u => u.Login == loginUser);
         }
-        public void UpdatePassword(string login, string password)
-        {
-            if (currentUser != null && currentUser.Login == login)
-            {
-                //currentUser.Password = password;
-            }
-        }
         private void SaveRegisteredUsers()
         {
             string jsonUserData = LoadData.ToJsonUserData(registeredUsers);

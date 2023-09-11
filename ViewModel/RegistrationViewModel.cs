@@ -1,12 +1,15 @@
 ﻿using AesEncryptionNamespace;
 using AuthenticationManagerNamespace;
+using FileManagerNamespace;
 using Quiz.Command;
 using QuizGame.Model;
 using QuizGame.View;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
+using UserDataNamespace;
 
 namespace QuizGame.ViewModel
 {
@@ -30,6 +33,8 @@ namespace QuizGame.ViewModel
                 && UserModel?.DateOfBirth != null;
             });
             PropertyChanged += (_, _) => { ((DelegateCommand)RegisterButton).RaiseCanExecuteChanged(); };
+
+            UserModel.DateOfBirth = DateTime.Now;
         }
 
         public ICommand RegisterButton { get; }
@@ -57,22 +62,6 @@ namespace QuizGame.ViewModel
                 if (value != registrationErrorMessage)
                 {
                     registrationErrorMessage = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public ICommand AuthorizationButton { get; }
-
-        public bool isAuthorizationSuccessful { get; private set; }
-        public bool IsAuthorizationSuccessful
-        {
-            get { return isAuthorizationSuccessful; }
-            set
-            {
-                if (value != isAuthorizationSuccessful)
-                {
-                    isAuthorizationSuccessful = value;
                     OnPropertyChanged();
                 }
             }
@@ -126,6 +115,23 @@ namespace QuizGame.ViewModel
                 IsRegistrationSuccessful = false;
                 RegistrationErrorMessage = "Ошибка при регистрации. Проверьте правильность введенных данных.";
             }
+        }
+
+        public ICommand PasswordRecovery { get; }
+
+        private void UpdatePassword(object parametr)
+        {
+            /*         
+            UserData currentUser = authenticationManager.GetCurrectUser();
+            if (currentUser != null)
+            {
+                Ввод пароля
+                 DataCorrectness.isCheckPassword(newPassword)
+                UserModel.Password = новый пароль
+                LoadData.SaveUserDataForUser(currentUser);
+                Возврат к окну настроек
+            }
+            */
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
