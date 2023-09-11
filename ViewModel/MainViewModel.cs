@@ -19,7 +19,7 @@ namespace QuizGame.ViewModel
 
         private void SwitchToRegistrationPage(object parameter)
         {
-            RegistrationPage registrationPageViewModel = new RegistrationPage();
+            var registrationPageViewModel = new RegistrationViewModel();
 
             RegistrationPage registrationPage = new RegistrationPage();
             registrationPage.DataContext = registrationPageViewModel;
@@ -31,10 +31,10 @@ namespace QuizGame.ViewModel
         {
             AuthorizationPageViewModel authorizationPageViewModel = new AuthorizationPageViewModel();
 
-            AuthorizationPageViewModel authorizationPage = new AuthorizationPageViewModel();
-            authorizationPage.DataContext = authorizationPageViewModel;
+            //var authorizationPage = new AuthorizationPage();
+            //authorizationPage.DataContext = authorizationPageViewModel;
 
-            Application.Current.MainWindow.Content = authorizationPage;
+            //Application.Current.MainWindow.Content = authorizationPage;
         }
     }
 }

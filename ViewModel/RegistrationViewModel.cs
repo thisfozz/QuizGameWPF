@@ -5,6 +5,7 @@ using Quiz.Command;
 using QuizGame.Model;
 using QuizGame.RegistrationAndAuthorization;
 using RegistrationNamespace;
+using System;
 using System.ComponentModel;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -19,6 +20,10 @@ namespace QuizGame.ViewModel
         private DataCorrectnessNamespace.DataCorrectness dataCorrectness;
         private AuthenticationManagerNamespace.AuthenticationManager authenticationManager;
         private QuizGame.RegistrationAndAuthorization.Registration registration;
+
+        private string _login;
+        private string _password;
+        private DateTime DateOfBirth;
 
         public ICommand RegisterButton { get; }
 
@@ -57,7 +62,12 @@ namespace QuizGame.ViewModel
             aesEncryption = new AesEncryption();
             userModel = new UserModel();
 
-            RegisterButton = new DelegateCommand(Register, CanRegister);
+            RegisterButton = new DelegateCommand(Register, (_) =>
+            {
+                return !string.IsNullOrEmpty(UserModel.Login) &&
+                !string.IsNullOrEmpty(UserModel.Login) &&
+                !string.IsNullOrEmpty(UserModel.Login);
+            });
             PropertyChanged += (_, _) => { ((DelegateCommand)RegisterButton).RaiseCanExecuteChanged(); };
         }
 
