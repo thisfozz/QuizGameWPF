@@ -29,12 +29,12 @@ namespace QuizGame.ViewModel
 
         private void SwtitchToAuthorizationPage(object parameter)
         {
-            AuthorizationPageViewModel authorizationPageViewModel = new AuthorizationPageViewModel();
+            AuthorizationViewModel authorizationPageViewModel = new AuthorizationViewModel();
 
-            //var authorizationPage = new AuthorizationPage();
-            //authorizationPage.DataContext = authorizationPageViewModel;
+            AuthorizationPage authorizationPage = new AuthorizationPage();
+            authorizationPage.DataContext = authorizationPageViewModel;
 
-            //Application.Current.MainWindow.Content = authorizationPage;
+            Application.Current.MainWindow.Content = authorizationPage;
         }
     }
 }

@@ -31,13 +31,6 @@ namespace DataCorrectnessNamespace
             
             return true;
         }
-        public DateTime ConvertToDate(string date)
-        {
-            DateTime convertedDate;
-            if (DateTime.TryParseExact(date, "dd.MM.yyyy", null, DateTimeStyles.None, out convertedDate)) return convertedDate;
-            
-            return DateTime.MinValue;
-        }
         private bool HasRusCharacters(string input)
         {
             string pattern = @"[\p{IsCyrillic}]";

@@ -23,17 +23,17 @@ namespace FileManagerNamespace
                         return deserializedData;
                     else
                     {
-                        Console.WriteLine("Ошибка при загрузке данных: Некорректный формат файла.");
+                        //Console.WriteLine("Ошибка при загрузке данных: Некорректный формат файла.");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Ошибка при загрузке данных: Файл не найден.");
+                    //Console.WriteLine("Ошибка при загрузке данных: Файл не найден.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при загрузке данных: {ex.Message}");
+                //Console.WriteLine($"Ошибка при загрузке данных: {ex.Message}");
             }
 
             return new List<UserData>();
@@ -47,7 +47,7 @@ namespace FileManagerNamespace
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при преобразовании в JSON: {ex.Message}");
+                //Console.WriteLine($"Ошибка при преобразовании в JSON: {ex.Message}");
                 return string.Empty;
             }
         }
@@ -61,12 +61,12 @@ namespace FileManagerNamespace
                 }
                 else
                 {
-                    Console.WriteLine("Ошибка при сохранении данных: Пустые данные.");
+                    //Console.WriteLine("Ошибка при сохранении данных: Пустые данные.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при сохранении данных: {ex.Message}");
+                //Console.WriteLine($"Ошибка при сохранении данных: {ex.Message}");
             }
         }
 
@@ -76,14 +76,14 @@ namespace FileManagerNamespace
             {
                 if (user == null)
                 {
-                    Console.WriteLine("Ошибка при сохранении данных пользователя: Пользователь не задан.");
+                    //Console.WriteLine("Ошибка при сохранении данных пользователя: Пользователь не задан.");
                     return;
                 }
 
                 List<UserData> users = LoadUserData();
                 if (users == null)
                 {
-                    Console.WriteLine("Ошибка при сохранении данных пользователя: Некорректный формат данных.");
+                    //Console.WriteLine("Ошибка при сохранении данных пользователя: Некорректный формат данных.");
                     return;
                 }
 
@@ -96,12 +96,12 @@ namespace FileManagerNamespace
                 }
                 else
                 {
-                    Console.WriteLine("Ошибка при сохранении данных пользователя: Пользователь не найден.");
+                    //Console.WriteLine("Ошибка при сохранении данных пользователя: Пользователь не найден.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при сохранении данных пользователя: {ex.Message}");
+                //Console.WriteLine($"Ошибка при сохранении данных пользователя: {ex.Message}");
             }
         }
     }

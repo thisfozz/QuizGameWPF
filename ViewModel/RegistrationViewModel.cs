@@ -2,8 +2,10 @@
 using AuthenticationManagerNamespace;
 using Quiz.Command;
 using QuizGame.Model;
+using QuizGame.View;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Input;
 
 namespace QuizGame.ViewModel
@@ -13,11 +15,26 @@ namespace QuizGame.ViewModel
         private AesEncryption aesEncryption;
         private AuthenticationUser authenticationManager;
 
-        private UserModel userModel;
+        public RegistrationViewModel()
+        {
+            authenticationManager = new AuthenticationUser();
+            aesEncryption = new AesEncryption();
+            UserModel = new UserModel();
+
+            RegisterButton = new DelegateCommand(Register,
+            (_) =>
+            {
+                return
+                !string.IsNullOrEmpty(UserModel?.Login)
+                && !string.IsNullOrEmpty(UserModel?.Password)
+                && UserModel?.DateOfBirth != null;
+            });
+            PropertyChanged += (_, _) => { ((DelegateCommand)RegisterButton).RaiseCanExecuteChanged(); };
+        }
 
         public ICommand RegisterButton { get; }
 
-        public bool isRegistrationSuccessful { get; set; }
+        public bool isRegistrationSuccessful { get; private set; }
         public bool IsRegistrationSuccessful
         {
             get { return isRegistrationSuccessful; }
@@ -31,7 +48,7 @@ namespace QuizGame.ViewModel
             }
         }
 
-        public string registrationErrorMessage { get; set; }
+        public string registrationErrorMessage { get; private set; }
         public string RegistrationErrorMessage
         {
             get { return registrationErrorMessage; }
@@ -45,23 +62,23 @@ namespace QuizGame.ViewModel
             }
         }
 
-        public RegistrationViewModel()
-        {
-            authenticationManager = new AuthenticationUser();
-            aesEncryption = new AesEncryption();
-            UserModel = new UserModel();
+        public ICommand AuthorizationButton { get; }
 
-            RegisterButton = new DelegateCommand(Register, 
-            (_) =>
+        public bool isAuthorizationSuccessful { get; private set; }
+        public bool IsAuthorizationSuccessful
+        {
+            get { return isAuthorizationSuccessful; }
+            set
             {
-                return 
-                !string.IsNullOrEmpty(UserModel?.Login)
-                && !string.IsNullOrEmpty(UserModel?.Password)
-                && UserModel?.DateOfBirth != null;
-            });
-            PropertyChanged += (_, _) => { ((DelegateCommand)RegisterButton).RaiseCanExecuteChanged(); };
+                if (value != isAuthorizationSuccessful)
+                {
+                    isAuthorizationSuccessful = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
+        private UserModel userModel;
         public UserModel UserModel
         {
             get { return userModel; }
@@ -90,6 +107,13 @@ namespace QuizGame.ViewModel
                 {
                     IsRegistrationSuccessful = true;
                     RegistrationErrorMessage = null;
+
+                    MainViewModel mainViewModel = new MainViewModel();
+
+                    MainMenuPage mainMenuPage = new MainMenuPage();
+                    mainMenuPage.DataContext = mainViewModel;
+
+                    Application.Current.MainWindow.Content = mainMenuPage;
                 }
                 else
                 {

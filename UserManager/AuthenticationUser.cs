@@ -23,7 +23,6 @@ namespace AuthenticationManagerNamespace
             registeredUsers = LoadData.LoadUserData();
             if (registeredUsers != null)
             {
-                AesEncryption aesEncryption = new AesEncryption();
                 UserData user = registeredUsers.Find(u => u.Login == login);
 
                 if (user == null) return false;
