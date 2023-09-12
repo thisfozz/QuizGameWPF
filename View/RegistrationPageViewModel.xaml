@@ -9,7 +9,7 @@
       Title="RegistrationPage">
     <Grid>
         <Image Source="background.jpg" Stretch="UniformToFill"/>
-        <Border Background="Black">
+        <Border Background="#1C1D31" CornerRadius="25">
             <Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
