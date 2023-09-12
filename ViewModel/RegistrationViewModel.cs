@@ -1,5 +1,6 @@
 ﻿using AesEncryptionNamespace;
 using AuthenticationManagerNamespace;
+using DataCorrectnessNamespace;
 using FileManagerNamespace;
 using Quiz.Command;
 using QuizGame.Model;
@@ -33,8 +34,6 @@ namespace QuizGame.ViewModel
                 && UserModel?.DateOfBirth != null;
             });
             PropertyChanged += (_, _) => { ((DelegateCommand)RegisterButton).RaiseCanExecuteChanged(); };
-
-            UserModel.DateOfBirth = DateTime.Now;
         }
 
         public ICommand RegisterButton { get; }
@@ -85,12 +84,17 @@ namespace QuizGame.ViewModel
 
         private void Register(object parametr)
         {
-            isRegistrationSuccessful = authenticationManager.RegistrationVerification(UserModel.Login, UserModel.Password, UserModel.DateOfBirth);
+            DataCorrectness dataCorrectness = new DataCorrectness();
+            DateTime dateCorrect = DateTime.Now;
+
+            if (dataCorrectness.ConvertToDate(UserModel.DateOfBirth, out dateCorrect)){
+                isRegistrationSuccessful = authenticationManager.RegistrationVerification(UserModel.Login, UserModel.Password, dateCorrect);
+            }
 
             if (!isRegistrationSuccessful)
             {
                 string encryptedPassword = aesEncryption.Encrypt(UserModel.Password);
-                isRegistrationSuccessful = authenticationManager.RegisterUser(UserModel.Login, encryptedPassword, UserModel.DateOfBirth);
+                isRegistrationSuccessful = authenticationManager.RegisterUser(UserModel.Login, encryptedPassword, dateCorrect);
 
                 if (isRegistrationSuccessful)
                 {

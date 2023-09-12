@@ -25,6 +25,19 @@ namespace DataCorrectnessNamespace
 
             return true;
         }
+        public bool ConvertToDate(string date, out DateTime result)
+        {
+            string dateFormat = "dd.MM.yyyy";
+
+            if (DateTime.TryParseExact(date, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public bool IsCheckDate(DateTime? date)
         {
             if (date == null) return false;

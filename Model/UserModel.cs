@@ -8,7 +8,7 @@ namespace QuizGame.Model
     {
         private string login;
         private string password;
-        private DateTime dateOfBirth;
+        private string dateOfBirth;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -35,7 +35,7 @@ namespace QuizGame.Model
                 OnPropertyChanged();
             }
         }
-        public DateTime DateOfBirth
+        public string DateOfBirth
         {
             get => dateOfBirth;
             set

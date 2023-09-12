@@ -5,47 +5,270 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizGame.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1600"
       Title="RegistrationPage">
+
+    <Page.Background>
+        <ImageBrush ImageSource="C:\Users\VLD\source\repos\QuizGame\Assets\MainBackGround.png"/>
+    </Page.Background>
+
+    <Page.Resources>
+
+        <!--Style Text Block Heading(Authorization)-->
+        <Style x:Key="HeadingBorderStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="Red" Offset="0" />
+                        <GradientStop Color="Purple" Offset="0.2" />
+                        <GradientStop Color="Orange" Offset="0.7" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Opacity" Value="0.65" />
+            <Setter Property="CornerRadius" Value="30" />
+            <Setter Property="Margin" Value="20" />
+        </Style>
+
+        <!--Style Button Join Now-->
+        <Style x:Key="AuthorizationButton" TargetType="Button">
+            <Setter Property="Content" Value="Зарегистрироваться"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <!--Style TextBlock(Login,Password)-->
+        <Style x:Key="TextBlockHintStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="260"/>
+            <Setter Property="Margin" Value="0,7,0,0"/>
+        </Style>
+
+        <!--Style Border Input Style(Login,Password)-->
+
+        <Style x:Key="BorderInputStyle" TargetType="Border">
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="260"/>
+            <Setter Property="Background" Value="#1C1D31"/>
+            <Setter Property="BorderBrush" Value="#FFFFFF"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Opacity" Value="0.5"/>
+            <Setter Property="CornerRadius" Value="20"/>
+        </Style>
+
+        <Style x:Key="DatePickerInputStyle" TargetType="DatePicker">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
-        <Image Source="background.jpg" Stretch="UniformToFill"/>
-        <Border Background="#1C1D31" CornerRadius="25">
-            <Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border CornerRadius="15"/>
+        
+        <!--Main Grid-->
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="600"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="180"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="180"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Border 
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,20,0,20">
+
+                <Grid>
+                    <Border 
+                        Style="{StaticResource HeadingBorderStyle}">
+
+                        <TextBlock 
+                        Text="Регистрация"
+                        Foreground="Black"
+                        FontSize="60"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        FontWeight="Bold"
+                        Height="90"/>
+                    </Border>
+                </Grid>
+
+            </Border>
+
+            <!--Login Form-->
+            <Grid 
+                Grid.Row="2" 
+                Grid.Column="1">
+
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Регистрация" FontSize="36" FontWeight="Bold" Foreground="White" Margin="0,10,0,20" Grid.Row="0" HorizontalAlignment="Center"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,5">
-                    <Label Content="Логин" Foreground="White" HorizontalAlignment="Center" FontSize="18"/>
-                    <TextBox Height="30" Width="200" Text="{Binding UserModel.Login, UpdateSourceTrigger=PropertyChanged}" FontSize="18"/>
-                </StackPanel>
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Background="#FFA500"
+                    CornerRadius="20"
+                    Margin="170,20,170,20">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
+                    </Border.Effect>
 
-                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,5">
-                    <Label Content="Пароль" Foreground="White" HorizontalAlignment="Center" FontSize="18"/>
-                    <TextBox Height="30" Width="200" Text="{Binding UserModel.Password, UpdateSourceTrigger=PropertyChanged}" FontSize="18"/>
-                </StackPanel>
-                
-                <StackPanel Grid.Row="3" Orientation="Vertical" Margin="0,5">
-                    <Label Content="Дата рождения" Foreground="White" HorizontalAlignment="Center" FontSize="18"/>
-                    <DatePicker Height="40" Width="200" Text="{Binding UserModel.DateOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
-                </StackPanel>
+                    <TextBlock 
+                    Grid.Row="0"
+                    Text="Логин"
+                    Style="{StaticResource TextBlockHintStyle}"/>
+                </Border>
 
-                <Button Content="Регистрация" Grid.Row="5" Margin="0,20" Height="40" Background="#FF007ACC" FontWeight="Bold" Width="200" Command="{Binding RegisterButton}"/>
+                <Border 
+                    Grid.Row="1" 
+                    Style="{StaticResource BorderInputStyle}">
 
-                <TextBlock Foreground="White" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Hyperlink Command="{Binding PasswordRecovery}" TextDecorations="None">
-                    <TextBlock Text="Already have an account?" Foreground="White"/>
-                </Hyperlink>
-            </TextBlock>
+                    <TextBox
+                    Background="Transparent"
+                    Foreground ="White"
+                    TextAlignment="Center"
+                    BorderThickness="0"
+                    Padding="8"
+                    Text="{Binding UserModel.Login, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+
             </Grid>
-        </Border>
+
+            <!--Password Form-->
+            <Grid 
+                Grid.Row="3" 
+                Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Background="#FFA500"
+                    CornerRadius="20"
+                    Margin="170,20,170,20">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
+                    </Border.Effect>
+
+                    <TextBlock 
+                    Grid.Row="0"
+                    Text="Пароль"
+                    Style="{StaticResource TextBlockHintStyle}"/>
+
+                </Border>
+
+                <Border 
+                    Grid.Row="1" 
+                    Style="{StaticResource BorderInputStyle}">
+
+                    <TextBox
+                    Background="Transparent"
+                    Foreground ="White"
+                    TextAlignment="Center"
+                    BorderThickness="0"
+                    Padding="8"
+                    Text="{Binding UserModel.Password, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+
+            </Grid>
+
+            <Grid 
+                Grid.Row="4" 
+                Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Background="#FFA500"
+                    CornerRadius="20"
+                    Margin="170,20,170,20">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
+                    </Border.Effect>
+
+                    <TextBlock 
+                    Grid.Row="0"
+                    Text="Дата рождения"
+                    Style="{StaticResource TextBlockHintStyle}"/>
+
+                </Border>
+
+                <Border 
+                    Grid.Row="1" 
+                    Style="{StaticResource BorderInputStyle}">
+
+                    <TextBox
+                    Background="Transparent"
+                    Foreground ="White"
+                    TextAlignment="Center"
+                    BorderThickness="0"
+                    Padding="8"
+                    Text="{Binding UserModel.DateOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+
+            </Grid>
+
+            <Border 
+                Grid.Row="5" 
+                Grid.Column="1"
+                Background="#FFFFFF"
+                Opacity="0.5"
+                CornerRadius="20"
+                Margin="150,30,150,100">
+
+
+                <Button 
+                    Style="{StaticResource AuthorizationButton}"
+                    Command="{Binding RegisterButton}"/>
+            </Border>
+
+        </Grid>
     </Grid>
 </Page>
