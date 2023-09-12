@@ -8,6 +8,11 @@
       d:DesignHeight="800" d:DesignWidth="1600"
       Title="AuthorizationPage">
 
+
+    <Page.Background>
+        <ImageBrush ImageSource="C:\Users\VLD\source\repos\QuizGame\Assets\MainBackGround.png"/>
+    </Page.Background>
+
     <Page.Resources>
 
         <!--Style Text Block Heading(Authorization)-->
@@ -58,11 +63,16 @@
             <Setter Property="Opacity" Value="0.5"/>
             <Setter Property="CornerRadius" Value="20"/>
         </Style>
-    </Page.Resources>
 
-    <Page.Background>
-        <ImageBrush ImageSource="C:\Users\VLD\source\repos\QuizGame\Assets\MainBackGround.png"/>
-    </Page.Background>
+        <!--Style Border General-->
+        <Style x:Key="BorderGeneralStyle" TargetType="Border">
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Background" Value="#FFA500"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Margin" Value="170,20,170,20"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Border CornerRadius="15"/>
@@ -126,11 +136,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Background="#FFA500"
-                    CornerRadius="20"
-                    Margin="170,20,170,20">
+                    Style="{StaticResource BorderGeneralStyle}">
                     <Border.Effect>
                         <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
                     </Border.Effect>
@@ -171,11 +177,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Background="#FFA500"
-                    CornerRadius="20"
-                    Margin="170,20,170,20">
+                    Style="{StaticResource BorderGeneralStyle}">
                     <Border.Effect>
                         <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
                     </Border.Effect>

@@ -50,7 +50,7 @@
             <Setter Property="Margin" Value="0,7,0,0"/>
         </Style>
 
-        <!--Style Border Input Style(Login,Password)-->
+        <!--Style Border Input Style(Login,Password, DateOfBirth)-->
 
         <Style x:Key="BorderInputStyle" TargetType="Border">
             <Setter Property="Grid.Column" Value="0"/>
@@ -63,13 +63,13 @@
             <Setter Property="CornerRadius" Value="20"/>
         </Style>
 
-        <Style x:Key="DatePickerInputStyle" TargetType="DatePicker">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="8"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <!--Style Border General-->
+        <Style x:Key="BorderGeneralStyle" TargetType="Border">
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Background" Value="#FFA500"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Margin" Value="170,20,170,20"/>
         </Style>
     </Page.Resources>
     
@@ -134,11 +134,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Background="#FFA500"
-                    CornerRadius="20"
-                    Margin="170,20,170,20">
+                    Style="{StaticResource BorderGeneralStyle}">
                     <Border.Effect>
                         <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
                     </Border.Effect>
@@ -179,11 +175,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Background="#FFA500"
-                    CornerRadius="20"
-                    Margin="170,20,170,20">
+                    Style="{StaticResource BorderGeneralStyle}">
                     <Border.Effect>
                         <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
                     </Border.Effect>
@@ -224,11 +216,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Background="#FFA500"
-                    CornerRadius="20"
-                    Margin="170,20,170,20">
+                    Style="{StaticResource BorderGeneralStyle}">
                     <Border.Effect>
                         <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
                     </Border.Effect>
