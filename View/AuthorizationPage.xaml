@@ -72,6 +72,15 @@
             <Setter Property="CornerRadius" Value="20"/>
             <Setter Property="Margin" Value="170,20,170,20"/>
         </Style>
+
+        <!--Style Text Box Input-->
+        <Style x:Key="TextBoxInput" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="8"/>
+        </Style>
     </Page.Resources>
 
     <Grid>
@@ -152,12 +161,8 @@
                     Style="{StaticResource BorderInputStyle}">
 
                     <TextBox
-                    Background="Transparent"
-                    Foreground ="White"
-                    TextAlignment="Center"
-                    BorderThickness="0"
-                    Padding="8"
-                    Text="{Binding UserModel.Login, UpdateSourceTrigger=PropertyChanged}"/>
+                        Style="{StaticResource TextBoxInput}"
+                        Text="{Binding UserModel.Login, UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
 
             </Grid>
@@ -194,12 +199,8 @@
                     Style="{StaticResource BorderInputStyle}">
 
                     <TextBox
-                    Background="Transparent"
-                    Foreground ="White"
-                    TextAlignment="Center"
-                    BorderThickness="0"
-                    Padding="8"
-                    Text="{Binding UserModel.Password, UpdateSourceTrigger=PropertyChanged}"/>
+                        Style="{StaticResource TextBoxInput}"
+                        Text="{Binding UserModel.Password, UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
 
             </Grid>
