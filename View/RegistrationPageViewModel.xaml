@@ -4,39 +4,28 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizGame.View"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1600"
       Title="RegistrationPage">
-
-    <Page.Background>
-        <ImageBrush ImageSource="C:\Users\VLD\source\repos\QuizGame\Assets\MainBackGround.png"/>
-    </Page.Background>
 
     <Page.Resources>
 
         <!--Style Text Block Heading(Authorization)-->
         <Style x:Key="HeadingBorderStyle" TargetType="Border">
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="Red" Offset="0" />
-                        <GradientStop Color="Purple" Offset="0.2" />
-                        <GradientStop Color="Orange" Offset="0.7" />
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
             <Setter Property="Opacity" Value="0.65" />
             <Setter Property="CornerRadius" Value="30" />
             <Setter Property="Margin" Value="20" />
         </Style>
 
-        <!--Style Button Join Now-->
+        <!--Style Button Register Now-->
         <Style x:Key="RegisterButtonStyle" TargetType="Button">
             <Setter Property="Content" Value="Зарегистрироваться"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="10,10,10,10"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
 
@@ -44,9 +33,18 @@
         <Style x:Key="BorderGeneralStyle" TargetType="Border">
             <Setter Property="Grid.Row" Value="0"/>
             <Setter Property="Grid.Column" Value="0"/>
-            <Setter Property="Background" Value="#FFA500"/>
+            <Setter Property="Background" Value="White"/>
             <Setter Property="CornerRadius" Value="20"/>
-            <Setter Property="Margin" Value="170,20,170,20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                        Color="Black"
+                        Direction="315"
+                        ShadowDepth="5"
+                        Opacity="0.5"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="160,20,170,20"/>
         </Style>
 
         <!--Style Border Input Style(Login,Password, DateOfBirth)-->
@@ -95,6 +93,10 @@
     </Page.Resources>
     
     <Grid>
+        <Image gif:ImageBehavior.RepeatBehavior="3x"  
+               gif:ImageBehavior.AnimatedSource="C:\Users\VLD\source\repos\QuizGame\Assets\Background.gif" 
+               Stretch="UniformToFill"/>
+        <Border CornerRadius="15"/>
         <Border CornerRadius="15"/>
         
         <!--Main Grid-->
@@ -102,13 +104,13 @@
         <Grid>
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1000"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="600"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="180"/>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="150"/>
@@ -151,9 +153,6 @@
 
                 <Border
                     Style="{StaticResource BorderGeneralStyle}">
-                    <Border.Effect>
-                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
-                    </Border.Effect>
 
                     <TextBlock 
                     Grid.Row="0"
@@ -183,9 +182,6 @@
 
                 <Border
                     Style="{StaticResource BorderGeneralStyle}">
-                    <Border.Effect>
-                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
-                    </Border.Effect>
 
                     <TextBlock 
                     Grid.Row="0"
@@ -215,9 +211,6 @@
 
                 <Border
                     Style="{StaticResource BorderGeneralStyle}">
-                    <Border.Effect>
-                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" />
-                    </Border.Effect>
 
                     <TextBlock 
                     Grid.Row="0"

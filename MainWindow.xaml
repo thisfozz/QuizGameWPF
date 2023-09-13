@@ -4,31 +4,112 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizGame"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1600"
         WindowStartupLocation="CenterScreen">
 
-    <Window.Background>
-        <ImageBrush ImageSource="C:\Users\VLD\source\repos\QuizGame\Assets\MainBackGround.png"/>
-    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Style x:Key="BorderButtonStyle" TargetType="Border">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="30,20,30,20"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
 
-        <!--
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button 
-                Content="Регистрация" M
-                argin="10" 
-                Command="{Binding RegistrationButton}" 
-                Height="50" 
-                Width="200"/>
-            <Button 
-                Content="Авторизация" 
-                Margin="10" 
-                Command="{Binding AuthorizationButton}" 
-                Height="50" W
-                idth="200"/>
-        </StackPanel>
-        -->
+    <Grid>
+        <Image gif:ImageBehavior.RepeatBehavior="3x"  
+               gif:ImageBehavior.AnimatedSource="C:\Users\VLD\source\repos\QuizGame\Assets\Background.gif" 
+               Stretch="UniformToFill"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1000"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <!--Button Authorization-->
+            <Border
+                Grid.Row="2"
+                Grid.Column="1">
+
+                <Grid>
+                    <Border 
+                        Style="{StaticResource BorderButtonStyle}">
+                        <Button 
+                            Content="Авторизация" 
+                            Foreground="Black"
+                            Command="{Binding AuthorizationButton}"/>
+                    </Border>
+                </Grid>
+                
+            </Border>
+
+            <!--Button Registration-->
+            <Border
+                Grid.Row="3"
+                Grid.Column="1">
+
+                <Grid>
+                    <Border 
+                        Style="{StaticResource BorderButtonStyle}">
+                        <Button 
+                            Content="Регистрация" 
+                            Foreground="Black"
+                            Command="{Binding RegistrationButton}"/>
+                    </Border>
+                </Grid>
+
+            </Border>
+
+            <Border
+                Grid.Row="4"
+                Grid.Column="1">
+
+                <Grid>
+                    <Border 
+                        Style="{StaticResource BorderButtonStyle}">
+                        <Button 
+                            Content="Настройки" 
+                            Foreground="Black"/>
+                    </Border>
+                </Grid>
+                
+            </Border>
+            
+            <Border
+                Grid.Row="5"
+                Grid.Column="1">
+
+                <Grid>
+                    <Border 
+                        Style="{StaticResource BorderButtonStyle}">
+                        <Button 
+                            Content="Выход" 
+                            Foreground="Black"/>
+                    </Border>
+                </Grid>
+                
+            </Border>
+        </Grid>
     </Grid>
 </Window>
