@@ -31,23 +31,22 @@
         </Style>
 
         <!--Style Button Join Now-->
-        <Style x:Key="AuthorizationButton" TargetType="Button">
+        <Style x:Key="RegisterButtonStyle" TargetType="Button">
             <Setter Property="Content" Value="Зарегистрироваться"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
 
-        <!--Style Text Block(Login,Password)-->
-        <Style x:Key="TextBlockHintStyle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Width" Value="260"/>
-            <Setter Property="Margin" Value="0,7,0,0"/>
+        <!--Style Border General-->
+        <Style x:Key="BorderGeneralStyle" TargetType="Border">
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Background" Value="#FFA500"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Margin" Value="170,20,170,20"/>
         </Style>
 
         <!--Style Border Input Style(Login,Password, DateOfBirth)-->
@@ -63,13 +62,26 @@
             <Setter Property="CornerRadius" Value="20"/>
         </Style>
 
-        <!--Style Border General-->
-        <Style x:Key="BorderGeneralStyle" TargetType="Border">
-            <Setter Property="Grid.Row" Value="0"/>
-            <Setter Property="Grid.Column" Value="0"/>
-            <Setter Property="Background" Value="#FFA500"/>
-            <Setter Property="CornerRadius" Value="20"/>
+        <!--Style Border Button-->
+        <Style x:Key="BorderButtonStyle" TargetType="Border">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Margin" Value="170,20,170,20"/>
+            <Setter Property="CornerRadius" Value="20"/>
+        </Style>
+
+        <!--Style Text Block(Login,Password)-->
+        <Style x:Key="TextBlockHintStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="260"/>
+            <Setter Property="Margin" Value="0,7,0,0"/>
         </Style>
 
         <!--Style Text Box Input-->
@@ -137,11 +149,6 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
                 <Border
                     Style="{StaticResource BorderGeneralStyle}">
                     <Border.Effect>
@@ -173,11 +180,6 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
 
                 <Border
                     Style="{StaticResource BorderGeneralStyle}">
@@ -211,11 +213,6 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
                 <Border
                     Style="{StaticResource BorderGeneralStyle}">
                     <Border.Effect>
@@ -240,20 +237,34 @@
 
             </Grid>
 
-            <Border 
-                Grid.Row="5" 
-                Grid.Column="1"
-                Background="#FFFFFF"
-                Opacity="0.5"
-                CornerRadius="20"
-                Margin="150,30,150,100">
+            <Grid
+                Grid.Row="5"
+                Grid.Column="1">
 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <Button 
-                    Style="{StaticResource AuthorizationButton}"
-                    Command="{Binding RegisterButton}"/>
-            </Border>
+                <Border 
+                    Style="{StaticResource BorderButtonStyle}">
 
+                    <Button 
+                        Style="{StaticResource RegisterButtonStyle}"
+                        Command="{Binding RegisterButton}"/>
+                </Border>
+
+                <TextBlock 
+                    Grid.Row="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Bold">
+                    <Hyperlink Command="{Binding AutorizationButton}">
+                        <TextBlock Text="Login In" Foreground="White"/>
+                    </Hyperlink>
+                </TextBlock>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

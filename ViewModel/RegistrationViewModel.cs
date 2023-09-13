@@ -34,6 +34,8 @@ namespace QuizGame.ViewModel
                 && UserModel?.DateOfBirth != null;
             });
             PropertyChanged += (_, _) => { ((DelegateCommand)RegisterButton).RaiseCanExecuteChanged(); };
+
+            AutorizationButton = new DelegateCommand(Autorization, (_) => true);
         }
 
         public ICommand RegisterButton { get; }
@@ -121,7 +123,17 @@ namespace QuizGame.ViewModel
             }
         }
 
-        public ICommand PasswordRecovery { get; }
+        public ICommand AutorizationButton { get; }
+
+        private void Autorization(object parametr)
+        {
+            AuthorizationViewModel authorizationPageViewModel = new AuthorizationViewModel();
+
+            AuthorizationPage authorizationPage = new AuthorizationPage();
+            authorizationPage.DataContext = authorizationPageViewModel;
+
+            Application.Current.MainWindow.Content = authorizationPage;
+        }
 
         private void UpdatePassword(object parametr)
         {

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using System.Windows;
+using System.Net;
 
 namespace QuizGame.ViewModel
 {
@@ -27,6 +28,8 @@ namespace QuizGame.ViewModel
                 && !string.IsNullOrEmpty(UserModel?.Password);
             });
             PropertyChanged += (_, _) => { ((DelegateCommand)AuthorizationButton).RaiseCanExecuteChanged(); };
+
+            RegisterButton = new DelegateCommand(Register, (_) => true);
 
         }
 
@@ -93,6 +96,18 @@ namespace QuizGame.ViewModel
             {
                 AuthorizationErrorMessage = "Неверный логин или пароль";
             }
+        }
+
+        public ICommand RegisterButton { get; }
+
+        private void Register(object parametr)
+        {
+            var registrationPageViewModel = new RegistrationViewModel();
+
+            RegistrationPage registrationPage = new RegistrationPage();
+            registrationPage.DataContext = registrationPageViewModel;
+
+            Application.Current.MainWindow.Content = registrationPage;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

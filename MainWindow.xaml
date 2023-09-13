@@ -5,12 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="800" Width="1600"
         WindowStartupLocation="CenterScreen">
+
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\VLD\source\repos\QuizGame\Assets\MainBackGround.png"/>
+    </Window.Background>
+
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+
+        <!--
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Регистрация" Margin="10" Command="{Binding RegistrationButton}" Height="50" Width="200"/>
-            <Button Content="Авторизация" Margin="10" Command="{Binding AuthorizationButton}" Height="50" Width="200"/>
+            <Button 
+                Content="Регистрация" M
+                argin="10" 
+                Command="{Binding RegistrationButton}" 
+                Height="50" 
+                Width="200"/>
+            <Button 
+                Content="Авторизация" 
+                Margin="10" 
+                Command="{Binding AuthorizationButton}" 
+                Height="50" W
+                idth="200"/>
         </StackPanel>
+        -->
     </Grid>
 </Window>
