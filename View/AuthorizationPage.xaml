@@ -3,8 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:QuizGame.View"
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      xmlns:res="clr-namespace:QuizGame.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1600"
       Title="AuthorizationPage">
@@ -59,7 +59,7 @@
 
         <!--Style Button Join Now-->
         <Style x:Key="AuthorizationButton" TargetType="Button">
-            <Setter Property="Content" Value="Войти"/>
+            <Setter Property="Content" Value="{x:Static res:Resources.AuthorizationConfirmButton}"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="10,10,5,10"/>
@@ -101,7 +101,6 @@
         <Border CornerRadius="15"/>
 
         <!--Main Grid-->
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1000"/>
@@ -120,7 +119,6 @@
             </Grid.RowDefinitions>
 
             <!--Text Authorization-->
-
             <Border 
                 Grid.Row="2"
                 Grid.Column="1"
@@ -131,7 +129,7 @@
                         Style="{StaticResource HeadingBorderStyle}">
 
                         <TextBlock 
-                        Text="Авторизация"
+                        Text="{x:Static res:Resources.Authorization}"
                         Foreground="Black"
                         FontSize="60"
                         VerticalAlignment="Center"
@@ -163,7 +161,7 @@
 
                     <TextBlock 
                     Grid.Row="0"
-                    Text="Логин"
+                    Text="{x:Static res:Resources.InputLogin}"
                     Style="{StaticResource TextBlockHintStyle}"/>
                 </Border>
 
@@ -197,7 +195,7 @@
 
                     <TextBlock 
                     Grid.Row="0"
-                    Text="Пароль"
+                    Text="{x:Static res:Resources.InputPassword}"
                     Style="{StaticResource TextBlockHintStyle}"/>
 
                 </Border>
@@ -208,13 +206,13 @@
 
                     <TextBox
                         Style="{StaticResource TextBoxInput}"
-                        Text="{Binding UserModel.Password, UpdateSourceTrigger=PropertyChanged}"/>
+                        Text="{Binding UserModel.Password, 
+                        UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
 
             </Grid>
 
             <!--Button-->
-
             <Grid
                 Grid.Row="5"
                 Grid.Column="1">
@@ -239,11 +237,10 @@
                     FontSize="16"
                     FontWeight="Bold">
                     <Hyperlink Command="{Binding RegisterButton}">
-                        <TextBlock Text="Register" Foreground="White"/>
+                        <TextBlock Text="{x:Static res:Resources.RegistrationInButton}" Foreground="White"/>
                     </Hyperlink>
                 </TextBlock>
             </Grid>
         </Grid>
     </Grid>
-
 </Page>

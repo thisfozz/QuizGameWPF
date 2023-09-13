@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuizGame"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:res="clr-namespace:QuizGame.Properties"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1600"
         WindowStartupLocation="CenterScreen">
@@ -56,7 +56,7 @@
                     <Border 
                         Style="{StaticResource BorderButtonStyle}">
                         <Button 
-                            Content="Авторизация" 
+                            Content="{x:Static res:Resources.Authorization}" 
                             Foreground="Black"
                             Command="{Binding AuthorizationButton}"/>
                     </Border>
@@ -73,7 +73,7 @@
                     <Border 
                         Style="{StaticResource BorderButtonStyle}">
                         <Button 
-                            Content="Регистрация" 
+                            Content="{x:Static res:Resources.Registration}" 
                             Foreground="Black"
                             Command="{Binding RegistrationButton}"/>
                     </Border>
@@ -104,7 +104,7 @@
                     <Border 
                         Style="{StaticResource BorderButtonStyle}">
                         <Button 
-                            Content="Выход" 
+                            Content="Выйти" 
                             Foreground="Black"/>
                     </Border>
                 </Grid>
