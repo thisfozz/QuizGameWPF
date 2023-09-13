@@ -126,11 +126,11 @@
   <data name="ConfirmRegistrationButton" xml:space="preserve">
     <value>Register</value>
   </data>
-  <data name="ExitButton" xml:space="preserve">
+  <data name="ExitAppButton" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="InputDateOfBirth" xml:space="preserve">
-    <value>DateOfBrith</value>
+    <value>Date Of Brith</value>
   </data>
   <data name="InputLogin" xml:space="preserve">
     <value>Login</value>
@@ -144,10 +144,10 @@
   <data name="Registration" xml:space="preserve">
     <value>Registration</value>
   </data>
-  <data name="RegistrationInButton" xml:space="preserve">
-    <value>Registration</value>
+  <data name="RegistrationButton" xml:space="preserve">
+    <value>Register</value>
   </data>
-  <data name="SettingsButon" xml:space="preserve">
-    <value>Settings</value>
+  <data name="SettingsUserButton" xml:space="preserve">
+    <value>Settings User</value>
   </data>
 </root>

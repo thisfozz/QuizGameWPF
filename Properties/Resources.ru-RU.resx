@@ -126,7 +126,7 @@
   <data name="ConfirmRegistrationButton" xml:space="preserve">
     <value>Зарегистрироваться</value>
   </data>
-  <data name="ExitButton" xml:space="preserve">
+  <data name="ExitAppButton" xml:space="preserve">
     <value>Выйти</value>
   </data>
   <data name="InputDateOfBirth" xml:space="preserve">
@@ -144,10 +144,10 @@
   <data name="Registration" xml:space="preserve">
     <value>Регистрация</value>
   </data>
-  <data name="RegistrationInButton" xml:space="preserve">
+  <data name="RegistrationButton" xml:space="preserve">
     <value>Создать аккаунт</value>
   </data>
-  <data name="SettingsButon" xml:space="preserve">
+  <data name="SettingsUser" xml:space="preserve">
     <value>Настройки</value>
   </data>
 </root>

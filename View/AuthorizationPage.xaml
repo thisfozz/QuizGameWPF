@@ -237,7 +237,7 @@
                     FontSize="16"
                     FontWeight="Bold">
                     <Hyperlink Command="{Binding RegisterButton}">
-                        <TextBlock Text="{x:Static res:Resources.RegistrationInButton}" Foreground="White"/>
+                        <TextBlock Text="{x:Static res:Resources.Registration}" Foreground="White"/>
                     </Hyperlink>
                 </TextBlock>
             </Grid>

@@ -90,14 +90,14 @@ namespace QuizGame.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Exit.
         /// </summary>
-        public static string ExitButton {
+        public static string ExitAppButton {
             get {
-                return ResourceManager.GetString("ExitButton", resourceCulture);
+                return ResourceManager.GetString("ExitAppButton", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на DateOfBrith.
+        ///   Ищет локализованную строку, похожую на Date Of Brith.
         /// </summary>
         public static string InputDateOfBirth {
             get {
@@ -142,20 +142,20 @@ namespace QuizGame.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Registration.
+        ///   Ищет локализованную строку, похожую на Register.
         /// </summary>
-        public static string RegistrationInButton {
+        public static string RegistrationButton {
             get {
-                return ResourceManager.GetString("RegistrationInButton", resourceCulture);
+                return ResourceManager.GetString("RegistrationButton", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Settings.
+        ///   Ищет локализованную строку, похожую на Settings User.
         /// </summary>
-        public static string SettingsButon {
+        public static string SettingsUserButton {
             get {
-                return ResourceManager.GetString("SettingsButon", resourceCulture);
+                return ResourceManager.GetString("SettingsUserButton", resourceCulture);
             }
         }
     }
