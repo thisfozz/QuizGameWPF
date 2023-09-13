@@ -147,7 +147,7 @@
   <data name="RegistrationButton" xml:space="preserve">
     <value>Создать аккаунт</value>
   </data>
-  <data name="SettingsUser" xml:space="preserve">
+  <data name="SettingsUserButton" xml:space="preserve">
     <value>Настройки</value>
   </data>
 </root>
