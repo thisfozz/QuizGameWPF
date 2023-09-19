@@ -126,6 +126,9 @@
   <data name="ConfirmRegistrationButton" xml:space="preserve">
     <value>Зарегистрироваться</value>
   </data>
+  <data name="CreatePackButton" xml:space="preserve">
+    <value>Создать пак</value>
+  </data>
   <data name="ExitAppButton" xml:space="preserve">
     <value>Выйти</value>
   </data>
@@ -149,5 +152,11 @@
   </data>
   <data name="SettingsUserButton" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="ShowLeaderBoard" xml:space="preserve">
+    <value>Таблица лидеров</value>
+  </data>
+  <data name="StartNewGameButton" xml:space="preserve">
+    <value>Новая игра</value>
   </data>
 </root>

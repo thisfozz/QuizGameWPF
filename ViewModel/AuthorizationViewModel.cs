@@ -10,7 +10,7 @@ using System.Net;
 
 namespace QuizGame.ViewModel
 {
-    internal class AuthorizationViewModel : INotifyPropertyChanged
+    public class AuthorizationViewModel : INotifyPropertyChanged
     {
         private AuthenticationUser authenticationManager;
 
@@ -85,10 +85,10 @@ namespace QuizGame.ViewModel
 
             if (isAuthorizationSuccessful)
             {
-                MainViewModel mainViewModel = new MainViewModel();
+                MenuViewModel menuViewModel = new MenuViewModel(UserModel.Login); //fix
 
                 MainMenuPage mainMenuPage = new MainMenuPage();
-                mainMenuPage.DataContext = mainViewModel;
+                mainMenuPage.DataContext = menuViewModel;
 
                 Application.Current.MainWindow.Content = mainMenuPage;
             }

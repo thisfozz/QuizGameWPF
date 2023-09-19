@@ -96,7 +96,7 @@
 
     <Grid>
         <Image gif:ImageBehavior.RepeatBehavior="3x"  
-               gif:ImageBehavior.AnimatedSource="C:\Users\VLD\source\repos\QuizGame\Assets\Background.gif" 
+               gif:ImageBehavior.AnimatedSource="/Assets/Background.gif" 
                Stretch="UniformToFill"/>
         <Border CornerRadius="15"/>
 

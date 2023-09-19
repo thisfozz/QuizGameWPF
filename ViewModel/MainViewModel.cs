@@ -10,11 +10,14 @@ namespace QuizGame.ViewModel
     {
         public ICommand RegistrationButton { get; }
         public ICommand AuthorizationButton { get; }
+        public ICommand ExitButton { get; }
+
 
         public MainViewModel()
         {
-            RegistrationButton = new DelegateCommand(SwitchToRegistrationPage, _ => true);
-            AuthorizationButton = new DelegateCommand(SwtitchToAuthorizationPage, _ => true);
+            RegistrationButton = new DelegateCommand(SwitchToRegistrationPage, (_) => true);
+            AuthorizationButton = new DelegateCommand(SwtitchToAuthorizationPage, (_) => true);
+            ExitButton = new DelegateCommand(ExitApplication, (_) => true);
         }
 
         private void SwitchToRegistrationPage(object parameter)
@@ -35,6 +38,11 @@ namespace QuizGame.ViewModel
             authorizationPage.DataContext = authorizationPageViewModel;
 
             Application.Current.MainWindow.Content = authorizationPage;
+        }
+
+        public void ExitApplication(object parametr)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

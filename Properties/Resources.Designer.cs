@@ -88,6 +88,15 @@ namespace QuizGame.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Create Pack.
+        /// </summary>
+        public static string CreatePackButton {
+            get {
+                return ResourceManager.GetString("CreatePackButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Exit.
         /// </summary>
         public static string ExitAppButton {
@@ -156,6 +165,24 @@ namespace QuizGame.Properties {
         public static string SettingsUserButton {
             get {
                 return ResourceManager.GetString("SettingsUserButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Show Leaderboard.
+        /// </summary>
+        public static string ShowLeaderBoard {
+            get {
+                return ResourceManager.GetString("ShowLeaderBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Star New Game.
+        /// </summary>
+        public static string StartNewGameButton {
+            get {
+                return ResourceManager.GetString("StartNewGameButton", resourceCulture);
             }
         }
     }

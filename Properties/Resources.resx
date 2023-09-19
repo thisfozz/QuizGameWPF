@@ -126,6 +126,9 @@
   <data name="ConfirmRegistrationButton" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="CreatePackButton" xml:space="preserve">
+    <value>Create Pack</value>
+  </data>
   <data name="ExitAppButton" xml:space="preserve">
     <value>Exit</value>
   </data>
@@ -149,5 +152,11 @@
   </data>
   <data name="SettingsUserButton" xml:space="preserve">
     <value>Settings User</value>
+  </data>
+  <data name="ShowLeaderBoard" xml:space="preserve">
+    <value>Show Leaderboard</value>
+  </data>
+  <data name="StartNewGameButton" xml:space="preserve">
+    <value>Star New Game</value>
   </data>
 </root>

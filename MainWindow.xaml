@@ -27,9 +27,10 @@
     </Window.Resources>
 
     <Grid>
-        <Image gif:ImageBehavior.RepeatBehavior="3x"  
-               gif:ImageBehavior.AnimatedSource="C:\Users\VLD\source\repos\QuizGame\Assets\Background.gif" 
-               Stretch="UniformToFill"/>
+        <Image 
+            gif:ImageBehavior.RepeatBehavior="3x"  
+            gif:ImageBehavior.AnimatedSource="/Assets/Background.gif" 
+            Stretch="UniformToFill"/>
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -62,7 +63,7 @@
                             Command="{Binding AuthorizationButton}"/>
                     </Border>
                 </Grid>
-                
+
             </Border>
 
             <!--Button Registration-->
@@ -90,28 +91,12 @@
                     <Border 
                         Style="{StaticResource BorderButtonStyle}">
                         <Button 
-                            Content="{x:Static res:Resources.SettingsUserButton}"
-                            Foreground="Black"
-                            Command="{Binding SettingsButton}"/>
-                    </Border>
-                </Grid>
-                
-            </Border>
-            
-            <Border
-                Grid.Row="5"
-                Grid.Column="1">
-
-                <Grid>
-                    <Border 
-                        Style="{StaticResource BorderButtonStyle}">
-                        <Button 
                             Content="{x:Static res:Resources.ExitAppButton}" 
                             Foreground="Black"
                             Command="{Binding ExitButton}"/>
                     </Border>
                 </Grid>
-                
+
             </Border>
         </Grid>
     </Grid>

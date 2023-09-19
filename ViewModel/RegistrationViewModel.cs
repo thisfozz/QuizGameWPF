@@ -1,7 +1,6 @@
 ﻿using AesEncryptionNamespace;
 using AuthenticationManagerNamespace;
 using DataCorrectnessNamespace;
-using FileManagerNamespace;
 using Quiz.Command;
 using QuizGame.Model;
 using QuizGame.View;
@@ -10,11 +9,10 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
-using UserDataNamespace;
 
 namespace QuizGame.ViewModel
 {
-    internal class RegistrationViewModel : INotifyPropertyChanged
+    public class RegistrationViewModel : INotifyPropertyChanged
     {
         private AesEncryption aesEncryption;
         private AuthenticationUser authenticationManager;
@@ -89,7 +87,8 @@ namespace QuizGame.ViewModel
             DataCorrectness dataCorrectness = new DataCorrectness();
             DateTime dateCorrect = DateTime.Now;
 
-            if (dataCorrectness.ConvertToDate(UserModel.DateOfBirth, out dateCorrect)){
+            if (dataCorrectness.ConvertToDate(UserModel.DateOfBirth, out dateCorrect))
+            {
                 isRegistrationSuccessful = authenticationManager.RegistrationVerification(UserModel.Login, UserModel.Password, dateCorrect);
             }
 
@@ -133,21 +132,6 @@ namespace QuizGame.ViewModel
             authorizationPage.DataContext = authorizationPageViewModel;
 
             Application.Current.MainWindow.Content = authorizationPage;
-        }
-
-        private void UpdatePassword(object parametr)
-        {
-            /*         
-            UserData currentUser = authenticationManager.GetCurrectUser();
-            if (currentUser != null)
-            {
-                Ввод пароля
-                 DataCorrectness.isCheckPassword(newPassword)
-                UserModel.Password = новый пароль
-                LoadData.SaveUserDataForUser(currentUser);
-                Возврат к окну настроек
-            }
-            */
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
