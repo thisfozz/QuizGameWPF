@@ -19,7 +19,7 @@ namespace QuizGame.ViewModel
             set 
             { 
                 _loginUser = authenticationUser.GetCurrectUser().Login;
-                // Я хочу получать информацию о Login из AuthenticationUser,
+                // Я хочу получать информацию о Login из AuthenticationUser из данного метода или GetLoggedInUserLogin в том же классе,
                 // где есть соответсвующий метод, но получаю назад null,
                 // хотя в момент когда срабатывает Login из AuthorizationViewModel - поле currentUser заполняется и имеет соответсвующее поле
                 // Но уже в этом классе MenuViewModel currentUser несуществует
