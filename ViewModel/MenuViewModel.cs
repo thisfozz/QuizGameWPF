@@ -35,7 +35,7 @@ namespace QuizGame.ViewModel
 
         private void ExitAccount(object parameter)
         {
-            authenticationUser.LogoutUser();
+            authenticationUser.LogoutUser(); //fix также не работает т.к недоступен currentUser
 
             var mainWindowViewModel = new MainViewModel();
 
