@@ -10,25 +10,32 @@ namespace QuizGame.ViewModel
     public class MenuViewModel : INotifyPropertyChanged
     {
         AuthenticationUser authenticationUser;
-        UserModel userModel;
 
         private string _loginUser;
 
         public string LoginUser
         {
-            get { return _loginUser; } //fix
+            get { return _loginUser; }
+            set 
+            { 
+                _loginUser = authenticationUser.GetCurrectUser().Login;
+                // Я хочу получать информацию о Login из AuthenticationUser,
+                // где есть соответсвующий метод, но получаю назад null,
+                // хотя в момент когда срабатывает Login из AuthorizationViewModel - поле currentUser заполняется и имеет соответсвующее поле
+                // Но уже в этом классе MenuViewModel currentUser несуществует
+            }
         }
         public ICommand ExitAccountButton { get; }
 
-        public MenuViewModel(string loginUser) //fix
+        public MenuViewModel(string loginUser) //fix избавиться от передачи аргумента
         {
             ExitAccountButton = new DelegateCommand(ExitAccount, (_) => true);
-            _loginUser = loginUser; //fix
+            _loginUser = loginUser; //fix избавиться от этого
         }
 
         private void ExitAccount(object parameter)
         {
-            //authenticationUser.LogoutUser(); //fix
+            authenticationUser.LogoutUser();
 
             var mainWindowViewModel = new MainViewModel();
 
