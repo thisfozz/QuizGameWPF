@@ -53,7 +53,8 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Background" Value="#FFFFFF"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Margin" Value="170,20,170,20"/>
+            <Setter Property="Margin" Value="170,20,150,20"/>
+            <Setter Property="Width" Value="260"/>
             <Setter Property="CornerRadius" Value="20"/>
         </Style>
 
@@ -62,7 +63,7 @@
             <Setter Property="Content" Value="{x:Static res:Resources.AuthorizationConfirmButton}"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="10,10,5,10"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Width" Value="260"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -131,7 +132,7 @@
                         <TextBlock 
                         Text="{x:Static res:Resources.Authorization}"
                         Foreground="Black"
-                        FontSize="60"
+                        FontSize="55"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         FontWeight="Bold"

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Assets\Background.gif" />
+    <None Remove="Assets\MainBackGround.png" />
     <None Remove="Assets\MenuBackground.gif" />
   </ItemGroup>
 
@@ -19,6 +20,9 @@
 
   <ItemGroup>
     <Resource Include="Assets\Background.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\MainBackGround.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\MenuBackground.gif">

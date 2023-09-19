@@ -1,21 +1,19 @@
 ﻿using Quiz.Command;
 using QuizGame.View;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace QuizGame.ViewModel
 {
     public class MainViewModel
     {
-        public ICommand RegistrationButton { get; }
+        public ICommand RegistrationButton { get; private set; }
         public ICommand AuthorizationButton { get; }
         public ICommand ExitButton { get; }
 
-
         public MainViewModel()
         {
-            RegistrationButton = new DelegateCommand(SwitchToRegistrationPage, (_) => true);
+            RegistrationButton = new DelegateCommand(SwtitchToAuthorizationPage, (_) => true);
             AuthorizationButton = new DelegateCommand(SwtitchToAuthorizationPage, (_) => true);
             ExitButton = new DelegateCommand(ExitApplication, (_) => true);
         }
@@ -32,10 +30,11 @@ namespace QuizGame.ViewModel
 
         private void SwtitchToAuthorizationPage(object parameter)
         {
-            AuthorizationViewModel authorizationPageViewModel = new AuthorizationViewModel();
+
+            var authorizationViewModel = new AuthorizationViewModel();
 
             AuthorizationPage authorizationPage = new AuthorizationPage();
-            authorizationPage.DataContext = authorizationPageViewModel;
+            authorizationPage.DataContext = authorizationViewModel;
 
             Application.Current.MainWindow.Content = authorizationPage;
         }

@@ -1,6 +1,8 @@
 ﻿using AuthenticationManagerNamespace;
 using Quiz.Command;
 using QuizGame.Model;
+using QuizGame.View;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -22,28 +24,41 @@ namespace QuizGame.ViewModel
                 // Я хочу получать информацию о Login из AuthenticationUser из данного метода или GetLoggedInUserLogin в том же классе,
                 // где есть соответсвующий метод, но получаю назад null,
                 // хотя в момент когда срабатывает Login из AuthorizationViewModel - поле currentUser заполняется и имеет соответсвующее поле
-                // Но уже в этом классе MenuViewModel currentUser несуществует
+                // Но уже в MenuViewModel currentUser несуществует
             }
         }
         public ICommand ExitAccountButton { get; }
+        public ICommand CreatePackButton { get; }
 
         public MenuViewModel(string loginUser) //fix избавиться от передачи аргумента
         {
             ExitAccountButton = new DelegateCommand(ExitAccount, (_) => true);
+            CreatePackButton = new DelegateCommand(CreatePack, (_) => true);
             _loginUser = loginUser; //fix избавиться от этого
         }
 
-        private void ExitAccount(object parameter)
+        private void CreatePack(object parametr)
         {
-            authenticationUser.LogoutUser(); //fix также не работает т.к недоступен currentUser
+            CreatePackViewModel createPackViewModel = new CreatePackViewModel();
 
-            var mainWindowViewModel = new MainViewModel();
+            CreatePackView createPackView = new CreatePackView();
+            createPackView.DataContext = createPackViewModel;
 
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.DataContext = mainWindowViewModel;
-
-            Application.Current.MainWindow.Content = mainWindow;
+            Application.Current.MainWindow.Content = createPackView;
         }
+
+        private void ExitAccount(object parametr)
+        {
+            /*
+            var mainViewModel = new MainViewModel();
+
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.DataContext = mainViewModel;
+
+            Application.Current.MainWindow.Content = mainwindow;
+            */
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
