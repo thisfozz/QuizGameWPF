@@ -44,7 +44,7 @@
 
     <Grid>
         <Image gif:ImageBehavior.RepeatBehavior="3x"  
-               gif:ImageBehavior.AnimatedSource="/Assets/MenuBackground.gif" 
+               gif:ImageBehavior.AnimatedSource="/Assets/MainBackGround.png" 
                Stretch="UniformToFill"/>
 
         <Grid>

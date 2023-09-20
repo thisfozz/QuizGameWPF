@@ -11,31 +11,38 @@ namespace QuizGame.ViewModel
 {
     public class MenuViewModel : INotifyPropertyChanged
     {
-        AuthenticationUser authenticationUser;
+        AuthenticationUser _authenticationUser;
 
-        private string _loginUser;
-
-        public string LoginUser
-        {
-            get { return _loginUser; }
-            set 
-            { 
-                _loginUser = authenticationUser.GetCurrectUser().Login;
-                // Я хочу получать информацию о Login из AuthenticationUser из данного метода или GetLoggedInUserLogin в том же классе,
-                // где есть соответсвующий метод, но получаю назад null,
-                // хотя в момент когда срабатывает Login из AuthorizationViewModel - поле currentUser заполняется и имеет соответсвующее поле
-                // Но уже в MenuViewModel currentUser несуществует
-            }
-        }
-        public ICommand ExitAccountButton { get; }
-        public ICommand CreatePackButton { get; }
-
-        public MenuViewModel(string loginUser) //fix избавиться от передачи аргумента
+        public MenuViewModel(AuthenticationUser authenticationUser) //fix избавиться от передачи аргумента
         {
             ExitAccountButton = new DelegateCommand(ExitAccount, (_) => true);
             CreatePackButton = new DelegateCommand(CreatePack, (_) => true);
-            _loginUser = loginUser; //fix избавиться от этого
+
+            _authenticationUser = authenticationUser;
+            UpdateLoginUser();
         }
+
+        private string _loginUser;
+        public string LoginUser
+        {
+            get { return _loginUser; }
+            private set
+            {
+                if (_loginUser != value)
+                {
+                    _loginUser = value;
+                    OnPropertyChanged(nameof(LoginUser));
+                }
+            }
+        }
+
+        private void UpdateLoginUser()
+        {
+            LoginUser = _authenticationUser.GetCurrectUser().Login;
+        }
+
+        public ICommand ExitAccountButton { get; }
+        public ICommand CreatePackButton { get; }
 
         private void CreatePack(object parametr)
         {
@@ -60,7 +67,7 @@ namespace QuizGame.ViewModel
         }
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
         {

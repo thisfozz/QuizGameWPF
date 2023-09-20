@@ -85,7 +85,7 @@ namespace QuizGame.ViewModel
 
             if (isAuthorizationSuccessful)
             {
-                MenuViewModel menuViewModel = new MenuViewModel(UserModel.Login); //fix хочу избавиться от передачи в качестве аргумента
+                MenuViewModel menuViewModel = new MenuViewModel(authenticationManager); //fix хочу избавиться от передачи в качестве аргумента
 
                 MainMenuPage mainMenuPage = new MainMenuPage();
                 mainMenuPage.DataContext = menuViewModel;

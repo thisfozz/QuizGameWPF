@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace QuizGame.View
 {
-    /// <summary>
-    /// Логика взаимодействия для CreatePackView.xaml
-    /// </summary>
     public partial class CreatePackView : Page
     {
         public CreatePackView()

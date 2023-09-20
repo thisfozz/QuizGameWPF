@@ -94,7 +94,7 @@
 
     <Grid>
         <Image gif:ImageBehavior.RepeatBehavior="3x"  
-               gif:ImageBehavior.AnimatedSource="/Assets/Background.gif" 
+               gif:ImageBehavior.AnimatedSource="/Assets/MainBackGround.png" 
                Stretch="UniformToFill"/>
         <Border CornerRadius="15"/>
         <Border CornerRadius="15"/>
