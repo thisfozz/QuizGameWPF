@@ -16,7 +16,7 @@
 
     <Page.Resources>
 
-        <Style x:Key="AddAndSave" TargetType="Button">
+        <Style x:Key="ManagerButton" TargetType="Button">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="5,5,5,5"/>
@@ -37,9 +37,9 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
         <Grid 
@@ -52,6 +52,7 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="300"/>
+                <RowDefinition Height="90"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
@@ -246,7 +247,7 @@
                     <Button
                         Content="Добавить вопрос"
                         Command="{Binding AddQuestionCommand}"
-                        Style="{StaticResource AddAndSave}"/>
+                        Style="{StaticResource ManagerButton}"/>
                 </Border>
 
                 <Border
@@ -260,9 +261,23 @@
                     <Button
                         Content="Сохранить вопрос"
                         Command="{Binding SaveQuestionCommand}"
-                        Style="{StaticResource AddAndSave}"/>
+                        Style="{StaticResource ManagerButton}"/>
                 </Border>
             </Grid>
+
+            <Border
+                    Grid.Row="5"
+                    Background="#FFFFFF"
+                    CornerRadius="25"
+                    BorderThickness="0"
+                    Width="230"
+                    Height="45"
+                    Margin="0,5,100,10">
+                <Button
+                        Content="Сохранить викторину"
+                        Command="{Binding SerializeQuizCommand}"
+                        Style="{StaticResource ManagerButton}"/>
+            </Border>
 
         </Grid>
 

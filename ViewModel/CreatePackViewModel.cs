@@ -130,6 +130,7 @@ namespace QuizGame.ViewModel
 
         public ICommand AddQuestionCommand { get; }
         public ICommand SaveQuestionCommand { get; }
+        public ICommand SerializeQuizCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand EditCommand { get; }
 
@@ -139,9 +140,10 @@ namespace QuizGame.ViewModel
             DeleteCommand = new DelegateCommand(DeleteQuestion, (_) => true);
             EditCommand = new DelegateCommand(EditQuestion, (_) => true);
             SaveQuestionCommand = new DelegateCommand(Save, (_) => true);
+            SerializeQuizCommand = new DelegateCommand(SerializeQuiz, (_) => true);
         }
 
-        private void Add(object parametr)
+        private void Add(object parametr) //ок
         {
             var questionQuiz = new QuestionQuiz
             {
@@ -187,9 +189,9 @@ namespace QuizGame.ViewModel
             OnPropertyChanged(nameof(Quiz));
         }
 
-        private void Save(object parametr)
+        private void Save(object parametr) // не ок
         {
-            var question = (QuestionQuiz)parametr; // null
+            var question = (QuestionQuiz)parametr; // понятно, что тут будет null конечно
             
             question.Question = QuestionText;
 
@@ -218,13 +220,13 @@ namespace QuizGame.ViewModel
             OnPropertyChanged(nameof(Quiz));
         }
 
-        private void DeleteQuestion(object parametr)
+        private void DeleteQuestion(object parametr) //ок
         {
             var question = (QuestionQuiz)parametr;
             Quiz.Remove(question);
         }
 
-        private void EditQuestion(object parametr)
+        private void EditQuestion(object parametr) //ок
         {
             QuestionQuiz questionQuiz = (QuestionQuiz)parametr;
 
@@ -239,6 +241,12 @@ namespace QuizGame.ViewModel
             IsCorrentAnswer2 = questionQuiz.Answers[1].IsCorrectAnswer;
             IsCorrentAnswer3 = questionQuiz.Answers[2].IsCorrectAnswer;
             IsCorrentAnswer4 = questionQuiz.Answers[3].IsCorrectAnswer;
+        }
+
+        private void SerializeQuiz(object parametr)
+        {
+            string JSONQuizz = quizSerializer.ToJsonQuiz(Quiz); //ок
+            //Дописать сохранение в файл с нужнным названием в любое место, которое выберет пользователь
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)

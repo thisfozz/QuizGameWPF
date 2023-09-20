@@ -3,12 +3,13 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System;
+using System.Collections.ObjectModel;
 
 namespace QuizSerializerNamespace
 {
     public class QuizSerializer
     {
-        public string ToJsonQuiz(List<QuestionQuiz> quiz)
+        public string ToJsonQuiz(ObservableCollection<QuestionQuiz> quiz)
         {
             try
             {
