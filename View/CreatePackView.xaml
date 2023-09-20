@@ -10,7 +10,7 @@
 
     <Page.Background>
         <ImageBrush 
-            ImageSource="/Assets/MainBackGround.png" 
+            ImageSource="/Assets/TMPBackground.jpg" 
             Stretch="UniformToFill"/>
     </Page.Background>
 
@@ -261,7 +261,8 @@
                     <Button
                         Content="Сохранить вопрос"
                         Command="{Binding SaveQuestionCommand}"
-                        Style="{StaticResource ManagerButton}"/>
+                        Style="{StaticResource ManagerButton}"
+                        CommandParameter="{Binding}"/>
                 </Border>
             </Grid>
 

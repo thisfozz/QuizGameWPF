@@ -16,9 +16,8 @@ namespace QuizSerializerNamespace
                 string json = JsonConvert.SerializeObject(quiz, Formatting.Indented);
                 return json;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine($"Ошибка при преобразовании в JSON: {ex.Message}");
                 return string.Empty;
             }
         }
@@ -47,20 +46,9 @@ namespace QuizSerializerNamespace
 
         public void SerializeQuiz(string jsonQuiz, string nameQuiz)
         {
-            try
+            if (!string.IsNullOrEmpty(jsonQuiz))
             {
-                if (!string.IsNullOrEmpty(jsonQuiz))
-                {
-                    File.WriteAllText(nameQuiz, jsonQuiz);
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка при сохранении данных: Пустые данные.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка при сохранении данных: {ex.Message}");
+                File.WriteAllText(nameQuiz, jsonQuiz);
             }
         }
     }

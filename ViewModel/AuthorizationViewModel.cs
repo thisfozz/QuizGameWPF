@@ -85,7 +85,7 @@ namespace QuizGame.ViewModel
 
             if (isAuthorizationSuccessful)
             {
-                MenuViewModel menuViewModel = new MenuViewModel(authenticationManager); //fix хочу избавиться от передачи в качестве аргумента
+                MenuViewModel menuViewModel = new MenuViewModel(authenticationManager);
 
                 MainMenuPage mainMenuPage = new MainMenuPage();
                 mainMenuPage.DataContext = menuViewModel;
@@ -95,6 +95,7 @@ namespace QuizGame.ViewModel
             else
             {
                 AuthorizationErrorMessage = "Неверный логин или пароль";
+                MessageBox.Show(AuthorizationErrorMessage);
             }
         }
 

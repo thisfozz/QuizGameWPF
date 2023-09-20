@@ -44,7 +44,7 @@
 
     <Grid>
         <Image gif:ImageBehavior.RepeatBehavior="3x"  
-               gif:ImageBehavior.AnimatedSource="/Assets/MainBackGround.png" 
+               gif:ImageBehavior.AnimatedSource="/Assets/TMPBackground.jpg" 
                Stretch="UniformToFill"/>
 
         <Grid>
@@ -87,7 +87,7 @@
                         <Button 
                             Content="{x:Static res:Resources.StartNewGameButton}" 
                             Style="{StaticResource ButtonStyle}"
-                            Foreground="White"
+                            Foreground="Black"
                             Command="{Binding StartNewGameButton}"/>
                     </Border>
                 </Grid>
@@ -104,7 +104,7 @@
                         <Button 
                             Content="{x:Static res:Resources.CreatePackButton}"
                             Style="{StaticResource ButtonStyle}"
-                            Foreground="White"
+                            Foreground="Black"
                             Command="{Binding CreatePackButton}"/>
                     </Border>
                 </Grid>
@@ -121,7 +121,7 @@
                         <Button 
                             Content="{x:Static res:Resources.ShowLeaderBoard}"
                             Style="{StaticResource ButtonStyle}"
-                            Foreground="White"
+                            Foreground="Black"
                             Command="{Binding ViewLeaderboard}"/>
                     </Border>
                 </Grid>
@@ -138,7 +138,7 @@
                         <Button 
                             Content="{x:Static res:Resources.SettingsUserButton}"
                             Style="{StaticResource ButtonStyle}"
-                            Foreground="White"
+                            Foreground="Black"
                             Command="{Binding SettingsUser}"/>
                     </Border>
                 </Grid>
@@ -155,7 +155,7 @@
                         <Button 
                             Content="{x:Static res:Resources.ExitAppButton}"
                             Style="{StaticResource ButtonStyle}"
-                            Foreground="White"
+                            Foreground="Black"
                             Command="{Binding ExitAccountButton}"/>
                     </Border>
                 </Grid>

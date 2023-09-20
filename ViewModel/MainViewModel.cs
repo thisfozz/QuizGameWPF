@@ -13,8 +13,8 @@ namespace QuizGame.ViewModel
 
         public MainViewModel()
         {
-            RegistrationButton = new DelegateCommand(SwtitchToAuthorizationPage, (_) => true);
             AuthorizationButton = new DelegateCommand(SwtitchToAuthorizationPage, (_) => true);
+            RegistrationButton = new DelegateCommand(SwitchToRegistrationPage, (_) => true);
             ExitButton = new DelegateCommand(ExitApplication, (_) => true);
         }
 

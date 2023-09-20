@@ -94,7 +94,7 @@
 
     <Grid>
         <Image gif:ImageBehavior.RepeatBehavior="3x"  
-               gif:ImageBehavior.AnimatedSource="/Assets/MainBackGround.png" 
+               gif:ImageBehavior.AnimatedSource="/Assets/TMPBackground.jpg" 
                Stretch="UniformToFill"/>
         <Border CornerRadius="15"/>
         <Border CornerRadius="15"/>
@@ -255,7 +255,7 @@
                     FontSize="16"
                     FontWeight="Bold">
                     <Hyperlink Command="{Binding AutorizationButton}">
-                        <TextBlock Text="{x:Static res:Resources.LoginInButton}" Foreground="White"/>
+                        <TextBlock Text="{x:Static res:Resources.LoginInButton}" Foreground="Black"/>
                     </Hyperlink>
                 </TextBlock>
             </Grid>
