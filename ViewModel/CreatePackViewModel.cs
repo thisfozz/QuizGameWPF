@@ -128,14 +128,17 @@ namespace QuizGame.ViewModel
             }
         }
 
-        public ICommand AddQuestion { get; private set; }
+        public ICommand AddQuestionCommand { get; }
+        public ICommand SaveQuestionCommand { get; }
         public ICommand DeleteCommand { get; }
-
+        public ICommand EditCommand { get; }
 
         public CreatePackViewModel()
         {
-            AddQuestion = new DelegateCommand(Add, (_) => true);
+            AddQuestionCommand = new DelegateCommand(Add, (_) => true);
             DeleteCommand = new DelegateCommand(DeleteQuestion, (_) => true);
+            EditCommand = new DelegateCommand(EditQuestion, (_) => true);
+            SaveQuestionCommand = new DelegateCommand(Save, (_) => true);
         }
 
         private void Add(object parametr)
@@ -184,13 +187,61 @@ namespace QuizGame.ViewModel
             OnPropertyChanged(nameof(Quiz));
         }
 
+        private void Save(object parametr)
+        {
+            var question = (QuestionQuiz)parametr; // null
+            
+            question.Question = QuestionText;
+
+            question.Answers[0].Answer = Answer1Text;
+            question.Answers[1].Answer = Answer2Text;
+            question.Answers[2].Answer = Answer3Text;
+            question.Answers[3].Answer = Answer4Text;
+
+            question.Answers[0].IsCorrectAnswer = IsCorrentAnswer1;
+            question.Answers[1].IsCorrectAnswer = IsCorrentAnswer2;
+            question.Answers[2].IsCorrectAnswer = IsCorrentAnswer3;
+            question.Answers[3].IsCorrectAnswer = IsCorrentAnswer4;
+
+            QuestionText = string.Empty;
+
+            Answer1Text = string.Empty;
+            Answer2Text = string.Empty;
+            Answer3Text = string.Empty;
+            Answer4Text = string.Empty;
+
+            IsCorrentAnswer1 = false;
+            IsCorrentAnswer2 = false;
+            IsCorrentAnswer3 = false;
+            IsCorrentAnswer4 = false;
+
+            OnPropertyChanged(nameof(Quiz));
+        }
+
         private void DeleteQuestion(object parametr)
         {
             var question = (QuestionQuiz)parametr;
             Quiz.Remove(question);
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void EditQuestion(object parametr)
+        {
+            QuestionQuiz questionQuiz = (QuestionQuiz)parametr;
+
+            QuestionText = questionQuiz.Question;
+
+            Answer1Text = questionQuiz.Answers[0].Answer;
+            Answer2Text = questionQuiz.Answers[1].Answer;
+            Answer3Text = questionQuiz.Answers[2].Answer;
+            Answer4Text = questionQuiz.Answers[3].Answer;
+
+            IsCorrentAnswer1 = questionQuiz.Answers[0].IsCorrectAnswer;
+            IsCorrentAnswer2 = questionQuiz.Answers[1].IsCorrectAnswer;
+            IsCorrentAnswer3 = questionQuiz.Answers[2].IsCorrectAnswer;
+            IsCorrentAnswer4 = questionQuiz.Answers[3].IsCorrectAnswer;
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
